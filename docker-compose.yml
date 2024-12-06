@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  user-service:
+    build: ./UserService
+    ports:
+      - "5001:5001"  # Map container port 3000 to host port 5001
+    environment:
+      - NODE_ENV=development
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+
+  product-service:
+    build: ./ProductService
+    ports:
+      - "5002:5002"  # Map container port 3000 to host port 5002
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=${MONGO_URI}
+
+  order-service:
+    build: ./OrderService
+    ports:
+      - "5003:5003"  # Map container port 3000 to host port 5003
+    environment:
+      - NODE_ENV=development
+
